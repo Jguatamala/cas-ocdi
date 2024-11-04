@@ -1,0 +1,216 @@
+/* Style for the body */
+body {
+    margin: 0;
+    background-image: url(img/bg.jpg); /* Path to your background image */
+    background-size: cover; /* Scale the image to cover the entire body */
+    background-repeat: no-repeat; /* Prevent the image from repeating */
+    background-position: center; /* Center the image */
+    background-attachment: fixed; /* Keep the background image fixed */
+    color: #020202; /* Dark text color for contrast */
+    font-family: Calibri, sans-serif; 
+}
+
+/* Style for the header */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Aligns .logias to the left and .logios to the right */
+    background-color: rgb(242, 242, 242); /* Light background */
+    padding: 20px 78px; /* Adds 20px padding on both left and right */
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Adds a shadow at the bottom */
+    position: sticky; /* Make the header sticky */
+    top: 0; /* Stick to the top */
+    z-index: 2000;
+    height: 49px;
+}
+
+
+/* Animation for sliding in from the left */
+@keyframes slideInFromLeft {
+    0% {
+        transform: translateX(-100%); /* Start off the screen to the left */
+        opacity: 0; /* Initially hidden */
+    }
+    100% {
+        transform: translateX(0); /* Slide into position */
+        opacity: 1; /* Fully visible */
+    }
+}
+
+/* Animation for sliding in from the right */
+@keyframes slideInFromRight {
+    0% {
+        transform: translateX(100%); /* Start off the screen to the right */
+        opacity: 0; /* Initially hidden */
+    }
+    100% {
+        transform: translateX(0); /* Slide into position */
+        opacity: 1; /* Fully visible */
+    }
+}
+
+/* Style for left group */
+.logias {
+    display: flex;
+    align-items: center;
+}
+
+/* Style for right group */
+.logios {
+    display: flex;
+    align-items: center;
+}
+
+/* Hide elements initially */
+h1,
+.logo,
+.logos {
+    opacity: 0; /* Hide initially */
+}
+
+/* Style for h1 */
+h1 {
+    margin: 0;
+    font-size: 27px;
+    color: black;
+    animation: slideInFromLeft 1s forwards; /* Slide in from the left */
+    animation-delay: 0.5s; /* Delay to stagger */
+}
+
+/* Style for logo */
+.logo {
+    width: 68px;
+    height: auto;
+    margin-right: 15px; /* Space between logo and text */
+    margin-top: -13px;
+    margin-bottom: -13px;
+    animation: slideInFromLeft 1s forwards; /* Slide in from the left */
+    animation-delay: 0.5s; /* Delay to stagger */
+}
+
+/* Style for logos */
+.logos {
+    width: 68px;
+    height: auto;
+    margin-right: 10px; /* Space between logos */
+    margin-top: -13px;
+    margin-bottom: -13px;
+    animation: slideInFromRight 1s forwards; /* Slide in from the right */
+    opacity: 0; /* Hide initially */
+}
+
+/* Animation sequencing */
+h1 {
+    animation: slideInFromLeft 1s forwards;
+    animation-delay: 0.5s; /* Slide in after 0.5 seconds */
+}
+
+.logo {
+    animation: slideInFromLeft 1s forwards;
+    animation-delay: 0.5s; /* Slide in after 0.5 seconds */
+}
+
+.logos:nth-child(1),
+.logos:nth-child(2) {
+    animation: slideInFromRight 1s forwards;
+    animation-delay: 1.5s; /* Slide in after 1.5 seconds */
+}
+
+.logos:nth-child(3),
+.logos:nth-child(4),
+.logos:nth-child(5) {
+    animation: slideInFromRight 1s forwards;
+    animation-delay: 2s; /* Slide in after 2 seconds */
+}
+
+span {
+    color: rgb(25, 116, 219);
+}
+
+/* Style for the popup overlay */
+.popup {
+    display: none; /* Initially hidden */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0); /* Start from the center, scale down */
+    background-color: white;
+    padding: 40px; /* Increased size */
+    border-radius: 15px; /* Rounded corners */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    animation: popupScale 0.5s forwards; /* Animation to scale up */
+}
+
+/* Darken background */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7); 
+    opacity: 0; 
+    transition: opacity 0.5s; 
+}
+
+/* Activate overlay */
+body.overlay-active::before {
+    opacity: 1; /* Fully visible when overlay-active class is added */
+}
+
+/* Animation for the popup */
+@keyframes popupScale {
+    0% {
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 0;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+}
+
+
+
+/* Slide-in animation for titles */
+@keyframes slideInFromBottom {
+    0% {
+        transform: translateY(100%); /* Start below the view */
+        opacity: 0; /* Initially hidden */
+    }
+    100% {
+        transform: translateY(0); /* End at normal position */
+        opacity: 1; /* Fully visible */
+    }
+}
+
+/* Slide-in animation for tables */
+@keyframes slideInFromBottom {
+    0% {
+        transform: translateY(100%); /* Start below the view */
+        opacity: 0; /* Initially hidden */
+    }
+    100% {
+        transform: translateY(0); /* End at normal position */
+        opacity: 1; /* Fully visible */
+    }
+}
+
+/* Class to make tables visible and animate */
+table {
+    visibility: hidden; /* Initially hidden */
+    animation: none; /* Initially no animation */
+    transition: visibility 0s, opacity 0.5s linear; /* Smooth transition for visibility and opacity */
+}
+
+table.table-visible {
+    visibility: visible; /* Make it visible */
+    opacity: 1; /* Fully visible */
+    animation: slideInFromBottom 0.5s forwards; /* Play the slide-in animation */
+}
+
+a{
+    color: darkblue;
+}
